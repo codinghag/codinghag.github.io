@@ -1,185 +1,219 @@
-*{
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-color: #42455A;
+/* CSS variables */
+:root {
+    --primary: #ddd;
+    --dark: #333;
+    --light: #fff;
+    --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 
-.container {
+/* Core styling */
+
+html {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);
+}
+
+body { 
+    background: #ccc;
+    margin: 30px 50px;
+    line-height: 1.4;
+}
+
+.btn {
+    background: var(--dark);
+    color: var(--light);
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+    border: 0;
+}
+
+img {
+    /* want images to stay within their containers */
+    max-width: 100%;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+}
+
+/* navigation */
+.main-nav ul{
+    display: grid;
+    grid-gap: 20px;
+    /* ul elements have default padding */
+    padding: 0;
+    list-style: none; 
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Style each individual link */
+
+.main-nav a {
+    background: var(--primary);
+    display: block;
+    text-decoration: none;
+    padding: 0.8rem;
+    text-align: center;
+    color: var(--dark);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow);
+}
+
+/* hover staTE - REVERSED FROM ORIGINAL STATE ABOVE */
+.main-nav a:hover {
+    background: var(--dark);
+    color: var(--light);
+}
+
+/* TOP CONTAINER */
+.top-container {
+    display: grid;
+    grid-gap: 20px;
+    /* setting template areas */
+    grid-template-areas: 
+        'showcase showcase top-box-a'
+        'showcase showcase top-box-b'
+}
+
+/* Assigning grid area to showcase otherwise it would not now what the above code means*/
+/* showcase */
+.showcase {
+    grid-area: showcase;
+    min-height: 400px;
+    background: url(blogging.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+    /* Using flex inside the grid for the inner h1, h4 and button text */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.showcase h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+    color: var(--light);
+}
+
+
+.showcase p {
+    font-size: 1.3rem;
+    margin-top: 0;
+    color: var(--light);
+ }
+
+
+/* Top Box */
+.top-box {
+    background: var(--primary);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.top-box .price {
+    font-size: 2.5rem;
+}
+
+.top-box a {
+    grid-area: top-box-a;
+}
+
+.top-box b {
+    grid-area: top-box-a;
+}
+
+/* Boxes */
+
+
+.boxes {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.box {
+    background: var(--primary);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow);
+}
+
+
+.info {
+    background: var(--primary);
+    box-shadow: var(--shadow);
+    /* Split in two columns with repeat(2, 1fr) */
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+}
+
+
+/* Portfolio */
+.portfolio {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+  
+  .portfolio img {
     width: 100%;
-    height: 100%;
-
-}
-
-/* Ul menu desing */
-.menu ul {
-  display: inline-flex;
-  margin: 50px;
-}
-
-/*Styling the li inside of the menu ul  */
-.menu ul li{
-  list-style: none;
-  margin: 0 20px;
-  color: #b2b1b1;
-}
-.logo img{
-  width: 30px;
-  margin-top: -7px;
-  margin-right: 48px;
-}
-
-.active {
-  color: #19dafa;
+    box-shadow: var(--shadow);
+  }  
+  
+  /* Footer */
+  footer {
+    margin-top: 2rem;
+    background: var(--dark);
+    color: var(--light);
+    text-align: center;
+    padding: 1rem;
 }
 
 
-.signup-btn {
-  /* button pushed over to the right without using floats top right position absolute */
-  top: 40px;
-  right: 80px;
-  position: absolute;
-   text-decoration: none; 
-  color: white;
-    /* using transparent border to create a radius border */
-  border: 2px solid transparent;
-  border-radius: 20px;
-  background-image: linear-gradient(#42455a, #42455a), radial-gradient(circle at top left, #fd00da, #19d7f8);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-
-} 
-
-.signup-btn span {
-  display: block;
-  padding: 8px 22px;
-}
-
-.banner {
-  width: 80%;
-  height: 70%;
-  top: 25%;
-  left: 130px;
-  position: absolute;
-  color: white;
-}
-
-.app-text {
-  width: 50%;
-  float: left;
-}
-
-.app-text h1 {
-  font-size: 43px;
-  width: 640px;
-  position: relative;
-  margin-left: 40px;
-}
-
-.app-text p {
-  width: 630px;
-  font-size: 15px;
-  margin: 30px 0 30px 40px;
-  line-height: 25px;
-  color: #919191;
-}
-
-.app-pic {
-  width: 50%;
-  float: right;
-}
-
-.app-pic img{
-  width: 100%;
-  margin-top: -180px;
-  padding-left: -100px;
-}
-
-/* This is the outter div. */
-.play-btn {
-  margin-left: 40px;
-  display: inline-flex;
-}
-
-/* This is the play button div inside outter div but not the actual button. this designs the border */
-.play-btn-inner {
-  height: 50px; 
-  width: 50px;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  background-image: linear-gradient(#42455a, #42455a), radial-gradient(circle at top left, #fd00da, #19d7f8);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  text-align: center;
-}
-
-
-
-/* this code aligns the icon in the circle(the actual button) */
-.play-btn-inner .fa{
-  padding: 18px 0;
-  font-size: 13px;
-  cursor: pointer;
-} 
-
-small {
-  margin: auto 20px;
-  cursor: pointer;
-  font-size: 12px;
-  color: #19d7f8;
-  letter-spacing: 3px;
-}
-
-.quick-links {
-  left: 0;
-  bottom: 0;
-  position: absolute;
-  background: linear-gradient(to right, #db1bf6, #19d7f8);
-}
-
-.quick-links ul {
-  display: inline-flex;
-  margin: 30px auto;
-  text-align: center;
-}
-
-.quick-links ul li {
-  list-style: none;
-  margin: 0 50px;
-  cursor: pointer;
-}
-
-/* code for the ICONS */
-.quick-links ul li .fa {
-  font-size: 25px;
-  color:  #fff;
-
-}
-
-/* code for the text */
-.quick-links ul li p {
-  margin-top: 15px;
-  font-size: 10px;
-  color: #fff;
-
-}
- 
-/* pushed div to the bottom right */
-.social-icons {
-  right: 72px;
-  bottom: 45px;
-  position: absolute;
-}
-
-.social-icons ul li {
-list-style: none;
-margin-top: 15px;
-text-align: center;
-}
-
-.social-icons ul li a {
-  color: #999;
-  border-radius: 50%;
-  border: 1px solid #999;
-  display: block;
-}
+/* Media Queries */
+@media (max-width: 700px) {
+    .top-container {
+      grid-template-areas:
+        'showcase showcase'
+        'top-box-a top-box-b';
+    }
+  
+    .showcase h1 {
+      font-size: 2.5rem;
+    }
+  
+    .main-nav ul {
+      grid-template-columns: 1fr;
+    }
+  
+    .info {
+      grid-template-columns: 1fr;
+    }
+  
+    .info .btn {
+      display: block;
+      text-align: center;
+      margin: auto;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .top-container {
+      grid-template-areas:
+        'showcase'
+        'top-box-a'
+        'top-box-b';
+    }
+  }
+  
